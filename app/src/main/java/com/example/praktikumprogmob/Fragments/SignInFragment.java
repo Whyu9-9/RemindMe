@@ -1,6 +1,7 @@
 package com.example.praktikumprogmob.Fragments;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.Editable;
@@ -22,7 +23,10 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.praktikumprogmob.AuthActivity;
 import com.example.praktikumprogmob.Constant;
+import com.example.praktikumprogmob.HomeActivity;
+import com.example.praktikumprogmob.MainActivity;
 import com.example.praktikumprogmob.R;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
@@ -136,9 +140,11 @@ public class SignInFragment extends Fragment {
                     SharedPreferences.Editor editor = userPref.edit();
                     editor.putString("token",object.getString("token"));
                     editor.putString("name",user.getString("name"));
-                    editor.putString("img",user.getString("img"));
+                    editor.putString("photo",user.getString("photo"));
+                    editor.putBoolean("isLoggedIn",true);
                     editor.apply();
-
+                    startActivity(new Intent((AuthActivity)getContext(), HomeActivity.class));
+                    ((AuthActivity) getContext()).finish();
                     Toast.makeText(getContext(),"Login Berhasil",Toast.LENGTH_SHORT).show();
                 }
             } catch (JSONException e) {

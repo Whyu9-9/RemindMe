@@ -35,9 +35,9 @@ public class ViewPagerAdapter extends PagerAdapter {
     };
 
     private String descs[]={
-            "Sebuah aplikasi pengingatmu untuk meminum obat",
-            "Berbasis aplikasi mobile sehingga mudah digunakan",
-            "Menyimpan data pengobatan yang kamu jalani dang mengingatkanmu",
+            "Sebuah aplikasi pengingat yang bertujuan untuk mengingatkanmu meminum obat",
+            "Berbasis aplikasi mobile android sehingga sangat mudah digunakan dan praktis",
+            "Menyimpan data pengobatan yang kamu jalani dan mengingatkanmu untuk meminum obat",
     };
 
     @Override

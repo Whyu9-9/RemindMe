@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:paddingLeft="50dp"
     android:paddingRight="50dp"
+    android:paddingTop="70dp"
     android:layout_height="match_parent">
     <TextView
         android:layout_width="match_parent"
