@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "146053960231",
+    "firebase_url": "https://praktikumprogmob.firebaseio.com",
+    "project_id": "praktikumprogmob",
+    "storage_bucket": "praktikumprogmob.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:146053960231:android:3216103944947ed5583402",
+        "android_client_info": {
+          "package_name": "com.example.praktikumprogmob"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "146053960231-be47bc86gsai9mic51mol71q45sub63j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCBfmbf35OozT5h22oxnEydLRmlDfm5q34"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "146053960231-be47bc86gsai9mic51mol71q45sub63j.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
