@@ -20,4 +20,6 @@
     <color name="colorGrey">#666666</color>
     <color name="colorLightGrey">#999999</color>
     <color name="colorRed">#F44336</color>
+    <color name="contentTextColor">#020000</color>
+    <color name="colorGreen">#3cb043</color>
 </resources>

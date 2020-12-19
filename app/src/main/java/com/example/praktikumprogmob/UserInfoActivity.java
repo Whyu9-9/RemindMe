@@ -132,8 +132,8 @@ public class UserInfoActivity extends AppCompatActivity {
         } ){
             @Override
             public Map<String, String> getHeaders() throws AuthFailureError {
-                HashMap<String, String> map = new HashMap<>();
                 String token = userPref.getString("token", "");
+                HashMap<String, String> map = new HashMap<>();
                 map.put("Authorization","Bearer "+token);
                 return map;
             }
