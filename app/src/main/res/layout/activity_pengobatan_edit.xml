@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".PengobatanDetail">
+    tools:context=".PengobatanEdit">
     <com.google.android.material.appbar.MaterialToolbar
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -17,12 +17,12 @@
             android:background="@color/transparent"
             android:layout_marginRight="12dp"
             android:tint="@color/black"
-            android:onClick="backDetail"
+            android:onClick="cancelEditMed"
             android:src="@drawable/arrowbackbl"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Medication Detail"
+            android:text="Edit Medication"
             android:textSize="18sp"
             android:textColor="@color/black"/>
     </com.google.android.material.appbar.MaterialToolbar>
@@ -36,28 +36,36 @@
             android:paddingLeft="60dp"
             android:paddingRight="60dp"
             android:paddingBottom="60dp"
-            android:paddingTop="30dp">
+            android:paddingTop="10dp">
 
             <ImageButton
                 android:layout_width="320dp"
                 android:layout_height="220dp"
                 android:layout_gravity="center_horizontal"
-                android:id="@+id/imgObatDetail"
+                android:id="@+id/imgObatEdit"
                 android:src="@color/colorLightGrey"
                 android:layout_marginBottom="5dp"/>
 
-
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:gravity="center_horizontal"
+                android:id="@+id/editPhoto"
+                android:text="Add Image"
+                android:textColor="@color/colorPrimary"
+                android:textSize="16sp" />
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="6dp"
-                android:id="@+id/txtLayoutJenisPenyakitDetail">
+                android:id="@+id/txtLayoutEditJenisPenyakit">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
-                    android:id="@+id/txtJenisPenyakitDetail"
+                    android:id="@+id/txtEditJenisPenyakit"
                     android:hint="Jenis Penyakit"
-                    android:enabled="false"
+                    android:inputType="text"
                     android:textSize="15dp"
                     android:layout_height="wrap_content">
                 </com.google.android.material.textfield.TextInputEditText>
@@ -67,13 +75,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="6dp"
-                android:id="@+id/txtLayoutNamaObatDetail">
+                android:id="@+id/txtLayoutEditNamaObat">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
-                    android:id="@+id/txtNamaObatDetail"
+                    android:id="@+id/txtEditNamaObat"
                     android:hint="Nama Obat"
-                    android:enabled="false"
+                    android:inputType="text"
                     android:textSize="15dp"
                     android:layout_height="wrap_content">
                 </com.google.android.material.textfield.TextInputEditText>
@@ -83,13 +91,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="6dp"
-                android:id="@+id/txtLayoutFrekuensiDetail">
+                android:id="@+id/txtLayoutEditFrekuensi">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
-                    android:id="@+id/txtFrekuensiDetail"
+                    android:id="@+id/txtEditFrekuensi"
                     android:hint="Frekuensi Minum"
-                    android:enabled="false"
+                    android:inputType="text"
                     android:textSize="15dp"
                     android:layout_height="wrap_content">
                 </com.google.android.material.textfield.TextInputEditText>
@@ -100,46 +108,28 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="30dp"
-                android:id="@+id/txtLayoutQtyDetail">
+                android:id="@+id/txtLayoutEditQty">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
-                    android:id="@+id/txtQtyDetail"
+                    android:id="@+id/txtEditQty"
                     android:hint="Dosis"
-                    android:enabled="false"
+                    android:inputType="text"
                     android:textSize="15dp"
                     android:layout_height="wrap_content">
                 </com.google.android.material.textfield.TextInputEditText>
 
             </com.google.android.material.textfield.TextInputLayout>
-            <LinearLayout
+            <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_gravity="center_vertical">
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Edit"
-                    android:id="@+id/btnEditMed"
-                    android:background="@drawable/btn_round"
-                    android:textColor="@color/white"
-                    android:textSize="17dp"
-                    android:layout_marginRight="13dp"
-                    android:layout_marginBottom="30dp"
-                    android:textAllCaps="false"/>
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Delete"
-                    android:id="@+id/btnDeleteMed"
-                    android:layout_marginLeft="50dp"
-                    android:background="@drawable/btn_roundred"
-                    android:textColor="@color/white"
-                    android:textSize="17dp"
-                    android:layout_marginBottom="30dp"
-                    android:textAllCaps="false"/>
-            </LinearLayout>
+                android:text="Save"
+                android:id="@+id/btnEditMed"
+                android:background="@drawable/btn_roundgreen"
+                android:textColor="@color/white"
+                android:textSize="17dp"
+                android:layout_marginBottom="70dp"
+                android:textAllCaps="false"/>
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

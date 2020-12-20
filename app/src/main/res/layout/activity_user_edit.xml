@@ -8,16 +8,21 @@
     <com.google.android.material.appbar.MaterialToolbar
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/toolbarAccount"
-        android:elevation="1dp"
-        app:title=" ">
-
+        app:title=" "
+        android:elevation="1dp">
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/transparent"
+            android:layout_marginRight="12dp"
+            android:tint="@color/black"
+            android:onClick="cancelEditProfile"
+            android:src="@drawable/arrowbackbl"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="RemindMe"
-            android:fontFamily="serif"
-            android:textSize="20sp"
+            android:text="Edit Profile"
+            android:textSize="18sp"
             android:textColor="@color/black"/>
     </com.google.android.material.appbar.MaterialToolbar>
     <LinearLayout
@@ -36,27 +41,36 @@
             android:layout_marginBottom="30dp"
             android:fontFamily="serif"
             android:gravity="center_horizontal"
-            android:text="User Profile"/>
+            android:text="Edit Profile"/>
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:layout_width="120dp"
             android:layout_height="120dp"
             android:layout_gravity="center_horizontal"
-            android:id="@+id/imgUserAccount"
+            android:id="@+id/imgUserAccountEdit"
             android:src="@color/colorLightGrey"
             android:layout_marginBottom="10dp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Select Photo"
+            android:textColor="@color/colorPrimary"
+            android:gravity="center_horizontal"
+            android:textSize="16sp"
+            android:id="@+id/txtSelectEditPhoto"
+            android:layout_marginBottom="20dp"/>
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
-            android:id="@+id/txtLayoutEmailAccount">
+            android:id="@+id/txtLayoutEmailEdit">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
-                android:id="@+id/txtEmailAccount"
+                android:id="@+id/txtEmailEdit"
                 android:hint="Email"
                 android:textColor="@color/black"
-                android:enabled="false"
+                android:inputType="text"
                 android:textSize="15dp"
                 android:layout_height="wrap_content">
             </com.google.android.material.textfield.TextInputEditText>
@@ -66,14 +80,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
-            android:id="@+id/txtLayoutNameAccount">
+            android:id="@+id/txtLayoutNameEdit">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
-                android:id="@+id/txtNameAccount"
+                android:id="@+id/txtNameEdit"
                 android:hint="Nama"
                 android:textColor="@color/black"
-                android:enabled="false"
+                android:inputType="text"
                 android:textSize="15dp"
                 android:layout_height="wrap_content">
             </com.google.android.material.textfield.TextInputEditText>
@@ -83,13 +97,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
-            android:id="@+id/txtLayoutAgeAccount">
+            android:id="@+id/txtLayoutAgeEdit">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
-                android:id="@+id/txtAgeAccount"
+                android:id="@+id/txtAgeEdit"
                 android:hint="Umur"
-                android:enabled="false"
+                android:inputType="text"
                 android:textSize="15dp"
                 android:textColor="@color/black"
                 android:layout_marginBottom="20dp"
@@ -100,21 +114,12 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Edit Profile"
-            android:id="@+id/btnEditProfile"
-            android:background="@drawable/btn_round"
+            android:text="Save"
+            android:id="@+id/btnEditSave"
+            android:background="@drawable/btn_roundgreen"
             android:textColor="@color/white"
             android:textSize="17dp"
             android:layout_marginBottom="12dp"
             android:textAllCaps="false"/>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Change Password"
-            android:textColor="@color/colorPrimary"
-            android:gravity="center_horizontal"
-            android:textSize="14sp"
-            android:id="@+id/txtChangePassword"
-            android:layout_marginBottom="20dp"/>
     </LinearLayout>
 </LinearLayout>

@@ -1,8 +1,10 @@
 package com.example.praktikumprogmob.Fragments;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,6 +29,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.praktikumprogmob.Adapters.PengobatansAdapter;
+import com.example.praktikumprogmob.AuthActivity;
 import com.example.praktikumprogmob.Constant;
 import com.example.praktikumprogmob.Database.RoomDB;
 import com.example.praktikumprogmob.HomeActivity;
@@ -50,6 +53,7 @@ public class HomeFragment extends Fragment {
     private SwipeRefreshLayout refreshLayout;
     private PengobatansAdapter pengobatansAdapter;
     private MaterialToolbar toolbar;
+    CountDownTimer cTimer = null;
     private SharedPreferences sharedPreferences;
     RoomDB database;
     public HomeFragment(){}
@@ -105,6 +109,9 @@ public class HomeFragment extends Fragment {
                     }
                     pengobatansAdapter = new PengobatansAdapter(getContext(),arrayList);
                     recyclerView.setAdapter(pengobatansAdapter);
+                    startTimer();
+                }else {
+                    logout();
                 }
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -133,5 +140,51 @@ public class HomeFragment extends Fragment {
         };
         RequestQueue queue = Volley.newRequestQueue(getContext());
         queue.add(request);
+    }
+    private void logout(){
+        cancelTimer();
+        StringRequest request = new StringRequest(Request.Method.GET, Constant.LOGOUT,response -> {
+            try {
+                JSONObject object = new JSONObject(response);
+                if (object.getBoolean("success")){
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    editor.clear();
+                    editor.apply();
+                    startActivity(new Intent(((HomeActivity)getContext()), AuthActivity.class));
+                    ((HomeActivity)getContext()).finish();
+                    Toast.makeText(getContext(),"Session Expired",Toast.LENGTH_SHORT).show();
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        },error -> {
+            error.printStackTrace();
+        }){
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                String token = sharedPreferences.getString("token","");
+                HashMap<String,String> map = new HashMap<>();
+                map.put("Authorization","Bearer "+token);
+                return map;
+            }
+        };
+        RequestQueue queue = Volley.newRequestQueue(getContext());
+        queue.add(request);
+    }
+    void startTimer() {
+        cTimer = new CountDownTimer(900000, 1000) {
+            public void onTick(long millisUntilFinished) {
+            }
+            public void onFinish() {
+                logout();
+            }
+        };
+        cTimer.start();
+    }
+
+    //cancel timer
+    void cancelTimer() {
+        if(cTimer!=null)
+            cTimer.cancel();
     }
 }

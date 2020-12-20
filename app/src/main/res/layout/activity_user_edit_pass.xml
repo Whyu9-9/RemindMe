@@ -1,62 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:layout_height="match_parent">
     <com.google.android.material.appbar.MaterialToolbar
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/toolbarAccount"
-        android:elevation="1dp"
-        app:title=" ">
-
+        app:title=" "
+        android:elevation="1dp">
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/transparent"
+            android:layout_marginRight="12dp"
+            android:tint="@color/black"
+            android:onClick="cancelEdit"
+            android:src="@drawable/arrowbackbl"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="RemindMe"
-            android:fontFamily="serif"
-            android:textSize="20sp"
+            android:text="Edit Password"
+            android:textSize="18sp"
             android:textColor="@color/black"/>
     </com.google.android.material.appbar.MaterialToolbar>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:paddingTop="20dp"
-        android:paddingRight="50dp"
         android:paddingLeft="50dp"
-        android:paddingBottom="50dp"
-        >
+        android:paddingRight="50dp"
+        android:paddingTop="10dp">
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="30sp"
-            android:layout_marginBottom="30dp"
+            android:text="Edit Pasword"
+            android:textSize="32dp"
             android:fontFamily="serif"
+            android:textColor="@color/colorGrey"
             android:gravity="center_horizontal"
-            android:text="User Profile"/>
-
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:layout_width="120dp"
-            android:layout_height="120dp"
-            android:layout_gravity="center_horizontal"
-            android:id="@+id/imgUserAccount"
-            android:src="@color/colorLightGrey"
-            android:layout_marginBottom="10dp"/>
+            android:layout_marginTop="70dp"
+            android:layout_marginBottom="80dp"/>
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:id="@+id/txtLayoutEmailAccount">
+            android:layout_marginBottom="6dp"
+            android:id="@+id/txtLayoutCurrentPass"
+            app:passwordToggleEnabled="true">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
-                android:id="@+id/txtEmailAccount"
-                android:hint="Email"
-                android:textColor="@color/black"
-                android:enabled="false"
+                android:id="@+id/txtCurrentPass"
+                android:hint="Current Pass"
+                android:inputType="textPassword"
                 android:textSize="15dp"
                 android:layout_height="wrap_content">
             </com.google.android.material.textfield.TextInputEditText>
@@ -65,15 +61,15 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:id="@+id/txtLayoutNameAccount">
+            android:layout_marginBottom="6dp"
+            android:id="@+id/txtLayoutNewPass"
+            app:passwordToggleEnabled="true">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
-                android:id="@+id/txtNameAccount"
-                android:hint="Nama"
-                android:textColor="@color/black"
-                android:enabled="false"
+                android:id="@+id/txtNewPass"
+                android:hint="New Pass"
+                android:inputType="textPassword"
                 android:textSize="15dp"
                 android:layout_height="wrap_content">
             </com.google.android.material.textfield.TextInputEditText>
@@ -82,39 +78,29 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:id="@+id/txtLayoutAgeAccount">
+            android:layout_marginBottom="30dp"
+            android:id="@+id/txtLayoutConfirmPass">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
-                android:id="@+id/txtAgeAccount"
-                android:hint="Umur"
-                android:enabled="false"
+                android:id="@+id/txtConfirmPass"
+                android:hint="Confirm Password"
+                android:inputType="textPassword"
                 android:textSize="15dp"
-                android:textColor="@color/black"
-                android:layout_marginBottom="20dp"
                 android:layout_height="wrap_content">
             </com.google.android.material.textfield.TextInputEditText>
 
         </com.google.android.material.textfield.TextInputLayout>
+
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Edit Profile"
-            android:id="@+id/btnEditProfile"
-            android:background="@drawable/btn_round"
+            android:text="Confirm"
+            android:id="@+id/btnChangePass"
+            android:background="@drawable/btn_roundgreen"
             android:textColor="@color/white"
             android:textSize="17dp"
-            android:layout_marginBottom="12dp"
+            android:layout_marginBottom="70dp"
             android:textAllCaps="false"/>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Change Password"
-            android:textColor="@color/colorPrimary"
-            android:gravity="center_horizontal"
-            android:textSize="14sp"
-            android:id="@+id/txtChangePassword"
-            android:layout_marginBottom="20dp"/>
     </LinearLayout>
 </LinearLayout>
