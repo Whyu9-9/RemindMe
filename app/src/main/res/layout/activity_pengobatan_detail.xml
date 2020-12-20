@@ -57,6 +57,7 @@
                     android:layout_width="match_parent"
                     android:id="@+id/txtJenisPenyakitDetail"
                     android:hint="Jenis Penyakit"
+                    android:textColor="@color/black"
                     android:enabled="false"
                     android:textSize="15dp"
                     android:layout_height="wrap_content">
@@ -73,6 +74,7 @@
                     android:layout_width="match_parent"
                     android:id="@+id/txtNamaObatDetail"
                     android:hint="Nama Obat"
+                    android:textColor="@color/black"
                     android:enabled="false"
                     android:textSize="15dp"
                     android:layout_height="wrap_content">
@@ -89,6 +91,7 @@
                     android:layout_width="match_parent"
                     android:id="@+id/txtFrekuensiDetail"
                     android:hint="Frekuensi Minum"
+                    android:textColor="@color/black"
                     android:enabled="false"
                     android:textSize="15dp"
                     android:layout_height="wrap_content">
@@ -106,6 +109,7 @@
                     android:layout_width="match_parent"
                     android:id="@+id/txtQtyDetail"
                     android:hint="Dosis"
+                    android:textColor="@color/black"
                     android:enabled="false"
                     android:textSize="15dp"
                     android:layout_height="wrap_content">

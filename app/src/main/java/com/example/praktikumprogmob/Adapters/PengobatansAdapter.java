@@ -2,6 +2,7 @@ package com.example.praktikumprogmob.Adapters;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,10 +26,13 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class PengobatansAdapter extends RecyclerView.Adapter<PengobatansAdapter.PengobatansHolder> {
     Context context;
     ArrayList<Pengobatan> list;
+    private SharedPreferences preferences;
+    private String imgUrl = "";
 
     public PengobatansAdapter(Context context, ArrayList<Pengobatan> list) {
         this.list = list;
         this.context = context;
+        preferences = context.getApplicationContext().getSharedPreferences("user",Context.MODE_PRIVATE);
     }
 
     @NonNull
