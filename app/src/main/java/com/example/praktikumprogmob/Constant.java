@@ -10,5 +10,8 @@ public class Constant {
     public static final String PENGOBATANS = HOME+"/reminder";
     public static final String ADD_PENGOBATANS = PENGOBATANS+"/create";
     public static final String USER_EDIT_PASS=HOME+"/user_edit_pass";
-
+    public static final String EDIT_USER_INFO=HOME+"/edit_user_info";
+    public static final String USER_INFO=HOME+"/user_info";
+    public static final String UPDATE_PENGOBATANS = PENGOBATANS+"/update";
+    public static final String DELETE_PENGOBATANS = PENGOBATANS+"/delete";
 }

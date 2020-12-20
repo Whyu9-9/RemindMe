@@ -162,4 +162,9 @@ public class AccountFragment extends Fragment {
         RequestQueue queue = Volley.newRequestQueue(getContext());
         queue.add(request);
     }
+    @Override
+    public void onResume() {
+        super.onResume();
+        setAccountInfo();
+    }
 }
