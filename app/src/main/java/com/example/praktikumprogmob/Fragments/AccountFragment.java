@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -75,6 +76,7 @@ public class AccountFragment extends Fragment {
         age = view.findViewById(R.id.txtAgeAccount);
         email = view.findViewById(R.id.txtEmailAccount);
         circleImageView = view.findViewById(R.id.imgUserAccount);
+        getUserInfo();
         setAccountInfo();
         buttonedit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -91,7 +93,44 @@ public class AccountFragment extends Fragment {
             }
         });
     }
+    private void getUserInfo() {
+        StringRequest request = new StringRequest(Request.Method.POST, Constant.USER_INFO, response -> {
+            try {
+                JSONObject object1 = new JSONObject(response);
+                if (object1.getBoolean("success")){
+                    JSONObject user = object1.getJSONObject("user");
+                    SharedPreferences userPref = getContext().getSharedPreferences("user", getContext().MODE_PRIVATE);
+                    SharedPreferences.Editor editor = userPref.edit();
+                    editor.putString("id",user.getString("id"));
+                    editor.putString("email",user.getString("email"));
+                    editor.putString("name",user.getString("name"));
+                    editor.putString("age",user.getString("age"));
+                    editor.putString("photo",user.getString("photo"));
+                    editor.apply();
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+                Toast.makeText(getContext(), "Get Data Failed", Toast.LENGTH_SHORT).show();
+            }
+        },error -> {
+            error.printStackTrace();
+        }){
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String, String> headers = new HashMap<>();
+                headers.put("Authorization", "Bearer " + tokenLogin);
+                return headers;
+            }
 
+            protected Map<String, String> getParams() throws AuthFailureError {
+                HashMap<String,String> map = new HashMap<>();
+                map.put("id", idLogin);
+                return map;
+            }
+        };
+        RequestQueue queue = Volley.newRequestQueue(getContext());
+        queue.add(request);
+    }
     private void setAccountInfo() {
         SharedPreferences userPref = getContext().getSharedPreferences("user", getContext().MODE_PRIVATE);
         String nameLogin = userPref.getString("name",null);
@@ -165,6 +204,7 @@ public class AccountFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
+        getUserInfo();
         setAccountInfo();
     }
 }
