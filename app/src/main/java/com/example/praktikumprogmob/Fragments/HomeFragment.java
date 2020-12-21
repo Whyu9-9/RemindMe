@@ -172,7 +172,7 @@ public class HomeFragment extends Fragment {
         queue.add(request);
     }
     void startTimer() {
-        cTimer = new CountDownTimer(900000, 1000) {
+        cTimer = new CountDownTimer(540000, 1000) {
             public void onTick(long millisUntilFinished) {
             }
             public void onFinish() {
