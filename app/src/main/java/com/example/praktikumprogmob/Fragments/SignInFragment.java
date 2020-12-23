@@ -148,7 +148,7 @@ public class SignInFragment extends Fragment {
                     editor.apply();
                     startActivity(new Intent((AuthActivity)getContext(), HomeActivity.class));
                     ((AuthActivity) getContext()).finish();
-                    Toast.makeText(getContext(),"Login Berhasil",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(),"Login Berhasil, Welcome "+userPref.getString("name",null),Toast.LENGTH_SHORT).show();
                 }
             } catch (JSONException e) {
                 e.printStackTrace();

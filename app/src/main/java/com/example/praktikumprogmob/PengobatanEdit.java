@@ -178,7 +178,7 @@ public class PengobatanEdit extends AppCompatActivity {
 
         if (!TextUtils.isDigitsOnly(frekuensi_minum.getText())){
             layoutfrekuensi_minum.setErrorEnabled(true);
-            layoutfrekuensi_minum.setError("Frekuensi Tidak Boleh Kosong");
+            layoutfrekuensi_minum.setError("Input Number!");
             return false;
         }
 
@@ -190,7 +190,7 @@ public class PengobatanEdit extends AppCompatActivity {
 
         if (!TextUtils.isDigitsOnly(qty.getText())){
             layoutqty.setErrorEnabled(true);
-            layoutqty.setError("Dosis Tidak Boleh Kosong");
+            layoutqty.setError("Input Number!");
             return false;
         }
         return true;

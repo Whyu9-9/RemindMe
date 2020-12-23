@@ -34,7 +34,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Edit Pasword"
+            android:text="Edit Password"
             android:textSize="32dp"
             android:fontFamily="serif"
             android:textColor="@color/colorGrey"
@@ -51,7 +51,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:id="@+id/txtCurrentPass"
-                android:hint="Current Pass"
+                android:hint="Current Password"
                 android:inputType="textPassword"
                 android:textSize="15dp"
                 android:layout_height="wrap_content">
@@ -68,7 +68,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:id="@+id/txtNewPass"
-                android:hint="New Pass"
+                android:hint="New Password"
                 android:inputType="textPassword"
                 android:textSize="15dp"
                 android:layout_height="wrap_content">

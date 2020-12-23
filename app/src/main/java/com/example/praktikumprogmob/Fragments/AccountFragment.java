@@ -154,8 +154,8 @@ public class AccountFragment extends Fragment {
         switch (item.getItemId()){
             case R.id.item_logout:{
                 AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-                builder.setMessage("Apakah anda ingin Log Out?");
-                builder.setPositiveButton("Log Out", new DialogInterface.OnClickListener() {
+                builder.setMessage("Apakah anda ingin Logout?");
+                builder.setPositiveButton("Logout", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         logout();
@@ -183,6 +183,7 @@ public class AccountFragment extends Fragment {
                     editor.apply();
                     startActivity(new Intent(((HomeActivity)getContext()), AuthActivity.class));
                     ((HomeActivity)getContext()).finish();
+                    Toast.makeText(getContext(),"Logout Berhasil",Toast.LENGTH_SHORT).show();
                 }
             } catch (JSONException e) {
                 e.printStackTrace();
