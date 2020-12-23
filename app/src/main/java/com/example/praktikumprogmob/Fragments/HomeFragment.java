@@ -1,17 +1,22 @@
 package com.example.praktikumprogmob.Fragments;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -34,7 +39,9 @@ import com.example.praktikumprogmob.Constant;
 import com.example.praktikumprogmob.Database.RoomDB;
 import com.example.praktikumprogmob.HomeActivity;
 import com.example.praktikumprogmob.Models.Pengobatan;
+import com.example.praktikumprogmob.PengobatanTrash;
 import com.example.praktikumprogmob.R;
+import com.example.praktikumprogmob.UserEditActivity;
 import com.google.android.material.appbar.MaterialToolbar;
 
 import org.json.JSONArray;
@@ -75,6 +82,7 @@ public class HomeFragment extends Fragment {
         toolbar = view.findViewById(R.id.toolbarHome);
         ((HomeActivity)getContext()).setSupportActionBar(toolbar);
         getPengobatans();
+        setHasOptionsMenu(true);
         refreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
@@ -104,6 +112,8 @@ public class HomeFragment extends Fragment {
                         pengobatan.setNama_obat(pengobatanObject.getString("nama_obat"));
                         pengobatan.setFrekuensi_minum(pengobatanObject.getString("frekuensi_minum"));
                         pengobatan.setQty(pengobatanObject.getString("qty"));
+                        pengobatan.setDeskripsi(pengobatanObject.getString("deskripsi"));
+                        pengobatan.setCreated_at(pengobatanObject.getString("created_at"));
                         arrayList.add(pengobatan);
                         database.pengobatanDao().insertPengobatan(pengobatan);
                     }
@@ -186,5 +196,21 @@ public class HomeFragment extends Fragment {
     void cancelTimer() {
         if(cTimer!=null)
             cTimer.cancel();
+    }
+
+    @Override
+    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
+        inflater.inflate(R.menu.menu_trash,menu);
+        super.onCreateOptionsMenu(menu, inflater);
+    }
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.item_trash:{
+                Intent intent = new Intent(getContext(), PengobatanTrash.class);
+                startActivity(intent);
+            }
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

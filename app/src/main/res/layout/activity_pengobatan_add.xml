@@ -37,7 +37,6 @@
             android:paddingRight="60dp"
             android:paddingBottom="60dp"
             android:paddingTop="10dp">
-
             <ImageView
                 android:layout_width="320dp"
                 android:layout_height="220dp"
@@ -91,13 +90,29 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="6dp"
+                android:id="@+id/txtLayoutDeskripsi">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:id="@+id/txtDeskripsi"
+                    android:hint="Deskripsi Obat"
+                    android:inputType="textMultiLine"
+                    android:textSize="15dp"
+                    android:layout_height="wrap_content">
+                </com.google.android.material.textfield.TextInputEditText>
+
+            </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="6dp"
                 android:id="@+id/txtLayoutFrekuensi">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:id="@+id/txtFrekuensi"
                     android:hint="Frekuensi Minum"
-                    android:inputType="text"
+                    android:inputType="number"
                     android:textSize="15dp"
                     android:layout_height="wrap_content">
                 </com.google.android.material.textfield.TextInputEditText>
@@ -114,7 +129,7 @@
                     android:layout_width="match_parent"
                     android:id="@+id/txtQty"
                     android:hint="Dosis"
-                    android:inputType="text"
+                    android:inputType="number"
                     android:textSize="15dp"
                     android:layout_height="wrap_content">
                 </com.google.android.material.textfield.TextInputEditText>

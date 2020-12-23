@@ -36,7 +36,7 @@
             android:paddingLeft="60dp"
             android:paddingRight="60dp"
             android:paddingBottom="60dp"
-            android:paddingTop="30dp">
+            android:paddingTop="10dp">
 
             <ImageView
                 android:layout_width="320dp"
@@ -45,7 +45,6 @@
                 android:id="@+id/imgObatDetail"
                 android:src="@color/colorLightGrey"
                 android:layout_marginBottom="5dp"/>
-
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
@@ -85,6 +84,23 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="6dp"
+                android:id="@+id/txtLayoutDeskripsiDetail">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:id="@+id/txtDeskripsiDetail"
+                    android:hint="Deskripsi Obat"
+                    android:textColor="@color/black"
+                    android:enabled="false"
+                    android:textSize="15dp"
+                    android:layout_height="wrap_content">
+                </com.google.android.material.textfield.TextInputEditText>
+
+            </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="6dp"
                 android:id="@+id/txtLayoutFrekuensiDetail">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -102,7 +118,6 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="30dp"
                 android:id="@+id/txtLayoutQtyDetail">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -116,6 +131,21 @@
                 </com.google.android.material.textfield.TextInputEditText>
 
             </com.google.android.material.textfield.TextInputLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_marginBottom="30dp">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:id="@+id/createdAt"
+                    android:text="datetime"
+                    android:textColor="@color/colorLightGrey"
+                    android:textSize="16sp" />
+            </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.util.Patterns;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,6 +37,7 @@ import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.regex.Pattern;
 
 public class SignUpFragment extends Fragment {
     private View view;
@@ -137,6 +139,12 @@ public class SignUpFragment extends Fragment {
         if (txtEmail.getText().toString().isEmpty()){
             layoutEmail.setErrorEnabled(true);
             layoutEmail.setError("Email is Required");
+            return false;
+        }
+
+        if (!Patterns.EMAIL_ADDRESS.matcher(txtEmail.getText().toString()).matches()){
+            layoutEmail.setErrorEnabled(true);
+            layoutEmail.setError("Valid Email Format is Required");
             return false;
         }
 

@@ -12,7 +12,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".PengobatanEdit"></activity>
+        <activity android:name=".PengobatanTrash"></activity>
+        <activity android:name=".PengobatanEdit" />
         <activity android:name=".UserEditPassActivity" />
         <activity android:name=".UserEditActivity" />
         <activity android:name=".PengobatanAdd" />

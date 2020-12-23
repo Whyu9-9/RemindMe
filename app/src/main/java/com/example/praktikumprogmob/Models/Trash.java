@@ -5,8 +5,8 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-@Entity(tableName = "obats")
-public class Pengobatan {
+@Entity(tableName = "trashs")
+public class Trash {
     @PrimaryKey(autoGenerate = false)
     @NonNull
     private String id;
@@ -32,8 +32,8 @@ public class Pengobatan {
     @ColumnInfo(name = "deskripsi")
     private String deskripsi;
 
-    @ColumnInfo(name = "created_at")
-    private String created_at;
+    @ColumnInfo(name = "deleted_at")
+    private String deleted_at;
 
     public String getId() {
         return id;
@@ -98,11 +98,12 @@ public class Pengobatan {
     public void setDeskripsi(String deskripsi) {
         this.deskripsi = deskripsi;
     }
-    public String getCreated_at() {
-        return created_at;
+
+    public String getDeleted_at() {
+        return deleted_at;
     }
 
-    public void setCreated_at(String created_at) {
-        this.created_at = created_at;
+    public void setDeleted_at(String deleted_at) {
+        this.deleted_at = deleted_at;
     }
 }

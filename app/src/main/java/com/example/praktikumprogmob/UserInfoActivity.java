@@ -11,6 +11,7 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.text.TextUtils;
 import android.util.Base64;
 import android.widget.Button;
 import android.widget.TextView;
@@ -103,6 +104,13 @@ public class UserInfoActivity extends AppCompatActivity {
             layoutAge.setError("Umur Tidak Boleh Kosong");
             return false;
         }
+
+        if(!TextUtils.isDigitsOnly(txtAge.getText())){
+            layoutAge.setErrorEnabled(true);
+            layoutAge.setError("Input Number!");
+            return false;
+        }
+
         return true;
     }
 

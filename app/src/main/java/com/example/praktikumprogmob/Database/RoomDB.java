@@ -8,9 +8,11 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
 import com.example.praktikumprogmob.Dao.PengobatanDao;
+import com.example.praktikumprogmob.Dao.TrashDao;
 import com.example.praktikumprogmob.Models.Pengobatan;
+import com.example.praktikumprogmob.Models.Trash;
 
-@Database(entities = {Pengobatan.class},version = 1,exportSchema = false)
+@Database(entities = {Pengobatan.class,Trash.class},version = 1,exportSchema = false)
 public abstract class RoomDB extends RoomDatabase {
     private static RoomDB database;
     private static String DATABASE_NAME = "database";
@@ -23,4 +25,5 @@ public abstract class RoomDB extends RoomDatabase {
         return database;
     }
     public abstract PengobatanDao pengobatanDao();
+    public abstract TrashDao trashDao();
 }

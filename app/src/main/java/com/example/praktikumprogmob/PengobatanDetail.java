@@ -14,6 +14,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -33,9 +34,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class PengobatanDetail extends AppCompatActivity {
-    TextInputEditText jenis_penyakit, nama_obat, frekuensi_minum, qty;
+    TextInputEditText jenis_penyakit, nama_obat, frekuensi_minum, qty, deskripsi;
     Button btnEdit, btnDelete;
     int position;
+    TextView created;
     ProgressDialog dialog1;
     String  idObat, tokenLogin;
     ImageView imageView;
@@ -55,6 +57,8 @@ public class PengobatanDetail extends AppCompatActivity {
         nama_obat = findViewById(R.id.txtNamaObatDetail);
         frekuensi_minum = findViewById(R.id.txtFrekuensiDetail);
         qty = findViewById(R.id.txtQtyDetail);
+        deskripsi = findViewById(R.id.txtDeskripsiDetail);
+        created = findViewById(R.id.createdAt);
 
         btnEdit = findViewById(R.id.btnEditMed);
         btnDelete = findViewById(R.id.btnDeleteMed);
@@ -142,6 +146,8 @@ public class PengobatanDetail extends AppCompatActivity {
         nama_obat.setText(pengobatan.getNama_obat());
         frekuensi_minum.setText(pengobatan.getFrekuensi_minum());
         qty.setText(pengobatan.getQty());
+        deskripsi.setText(pengobatan.getDeskripsi());
+        created.setText(pengobatan.getCreated_at());
         idObat = pengobatan.getId();
         Picasso.get().load(Constant.URL+"image/"+pengobatan.getImg()).into(imageView);
     }

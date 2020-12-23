@@ -11,6 +11,7 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.text.TextUtils;
 import android.util.Base64;
 import android.view.View;
 import android.widget.Button;
@@ -38,9 +39,9 @@ public class PengobatanAdd extends AppCompatActivity {
     private Button btnAdd;
     ImageView imgObat;
     TextView txtaddimg;
-    EditText penyakit, obat, frekuensi, dosis;
+    EditText penyakit, obat, frekuensi, dosis, desc;
     private static final int GALLERY_ADD_IMAGE = 1;
-    TextInputLayout layoutPenyakit, layoutObat, layoutFrekuensi, layoutDosis;
+    TextInputLayout layoutPenyakit, layoutObat, layoutFrekuensi, layoutDosis,layoutDesc;
     private Bitmap bitmap = null;
     private ProgressDialog dialog;
     private SharedPreferences preferences;
@@ -64,11 +65,13 @@ public class PengobatanAdd extends AppCompatActivity {
         obat = findViewById(R.id.txtNamaObat);
         frekuensi = findViewById(R.id.txtFrekuensi);
         dosis = findViewById(R.id.txtQty);
+        desc = findViewById(R.id.txtDeskripsi);
 
         layoutPenyakit = findViewById(R.id.txtLayoutJenisPenyakit);
         layoutObat = findViewById(R.id.txtLayoutNamaObat);
         layoutFrekuensi = findViewById(R.id.txtLayoutFrekuensi);
         layoutDosis = findViewById(R.id.txtLayoutQty);
+        layoutDesc = findViewById(R.id.txtLayoutDeskripsi);
         imgObat = findViewById(R.id.imgObat);
         txtaddimg.setOnClickListener(view -> {
             Intent i = new Intent(Intent.ACTION_PICK);
@@ -101,6 +104,7 @@ public class PengobatanAdd extends AppCompatActivity {
         String nama_obat = obat.getText().toString().trim();
         String frekuensi_minum = frekuensi.getText().toString().trim();
         String qty = dosis.getText().toString().trim();
+        String deskripsi = desc.getText().toString().trim();
 
         StringRequest request = new StringRequest(Request.Method.POST, Constant.ADD_PENGOBATANS,response -> {
             try {
@@ -134,6 +138,7 @@ public class PengobatanAdd extends AppCompatActivity {
                 map.put("nama_obat", nama_obat);
                 map.put("frekuensi_minum",frekuensi_minum);
                 map.put("qty", qty);
+                map.put("deskripsi", deskripsi);
                 map.put("img", bitmapToString(bitmap));
                 return map;
             }
@@ -155,9 +160,21 @@ public class PengobatanAdd extends AppCompatActivity {
             return false;
         }
 
+        if (desc.getText().toString().isEmpty()){
+            layoutDesc.setErrorEnabled(true);
+            layoutDesc.setError("Deskripsi Tidak Boleh Kosong");
+            return false;
+        }
+
         if (frekuensi.getText().toString().isEmpty()){
             layoutFrekuensi.setErrorEnabled(true);
             layoutFrekuensi.setError("Frekuensi Tidak Boleh Kosong");
+            return false;
+        }
+
+        if (!TextUtils.isDigitsOnly(frekuensi.getText())){
+            layoutFrekuensi.setErrorEnabled(true);
+            layoutFrekuensi.setError("Input Number!");
             return false;
         }
 
@@ -166,6 +183,14 @@ public class PengobatanAdd extends AppCompatActivity {
             layoutDosis.setError("Dosis Tidak Boleh Kosong");
             return false;
         }
+
+        if (!TextUtils.isDigitsOnly(dosis.getText())){
+            layoutDosis.setErrorEnabled(true);
+            layoutDosis.setError("Input Number!");
+            return false;
+        }
+
+
         return true;
     }
 

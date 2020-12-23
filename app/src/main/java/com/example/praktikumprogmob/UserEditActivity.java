@@ -11,7 +11,9 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.provider.MediaStore;
+import android.text.TextUtils;
 import android.util.Base64;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -234,9 +236,19 @@ public class UserEditActivity extends AppCompatActivity {
             layoutEmail.setError("Email is Required");
             return false;
         }
+        if (!Patterns.EMAIL_ADDRESS.matcher(email.getText().toString()).matches()){
+            layoutEmail.setErrorEnabled(true);
+            layoutEmail.setError("Valid Email Format is Required");
+            return false;
+        }
         if(age.getText().toString().isEmpty()){
             layoutAge.setErrorEnabled(true);
             layoutAge.setError("Age is Required");
+            return false;
+        }
+        if(!TextUtils.isDigitsOnly(age.getText())){
+            layoutAge.setErrorEnabled(true);
+            layoutAge.setError("Input Number!");
             return false;
         }
         return true;

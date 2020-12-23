@@ -14,4 +14,5 @@ public class Constant {
     public static final String USER_INFO=HOME+"/user_info";
     public static final String UPDATE_PENGOBATANS = PENGOBATANS+"/update";
     public static final String DELETE_PENGOBATANS = PENGOBATANS+"/delete";
+    public static final String TRASH = HOME+"/reminder/trash";
 }

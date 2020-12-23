@@ -21,11 +21,12 @@
 </com.google.android.material.appbar.MaterialToolbar>
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:id="@+id/swipe_home">
 <androidx.recyclerview.widget.RecyclerView
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingBottom="60dp"
     android:id="@+id/recyclerHome">
 
 </androidx.recyclerview.widget.RecyclerView>

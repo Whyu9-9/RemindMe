@@ -58,7 +58,7 @@
             android:layout_width="match_parent"
             android:id="@+id/txtAgeUserInfo"
             android:hint="Umur"
-            android:inputType="text"
+            android:inputType="number"
             android:textSize="15dp"
             android:layout_height="wrap_content">
         </com.google.android.material.textfield.TextInputEditText>

@@ -10,6 +10,7 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.text.TextUtils;
 import android.util.Base64;
 import android.view.View;
 import android.widget.Button;
@@ -37,8 +38,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class PengobatanEdit extends AppCompatActivity {
-    TextInputEditText jenis_penyakit, nama_obat, frekuensi_minum, qty;
-    TextInputLayout layoutjenis_penyakit, layoutnama_obat, layoutfrekuensi_minum, layoutqty;
+    TextInputEditText jenis_penyakit, nama_obat, frekuensi_minum, qty, deskripsi;
+    TextInputLayout layoutjenis_penyakit, layoutnama_obat, layoutfrekuensi_minum, layoutqty,layoutdeskripsi;
     TextView editPhoto;
     Button btnSaveEdit;
     int position;
@@ -64,11 +65,13 @@ public class PengobatanEdit extends AppCompatActivity {
         layoutnama_obat = findViewById(R.id.txtLayoutEditNamaObat);
         layoutfrekuensi_minum = findViewById(R.id.txtLayoutEditFrekuensi);
         layoutqty = findViewById(R.id.txtLayoutEditQty);
+        layoutdeskripsi = findViewById(R.id.txtLayoutEditDeskripsi);
         
         jenis_penyakit = findViewById(R.id.txtEditJenisPenyakit);
         nama_obat = findViewById(R.id.txtEditNamaObat);
         frekuensi_minum = findViewById(R.id.txtEditFrekuensi);
         qty = findViewById(R.id.txtEditQty);
+        deskripsi = findViewById(R.id.txtEditDeskripsi);
 
         btnSaveEdit = findViewById(R.id.btnEditMed);
         editPhoto = findViewById(R.id.editPhoto);
@@ -104,6 +107,7 @@ public class PengobatanEdit extends AppCompatActivity {
                     pengobatan.setJenis_penyakit(jenis_penyakit.getText().toString());
                     pengobatan.setNama_obat(nama_obat.getText().toString());
                     pengobatan.setFrekuensi_minum(frekuensi_minum.getText().toString());
+                    pengobatan.setDeskripsi(deskripsi.getText().toString());
                     pengobatan.setQty(qty.getText().toString());
                     HomeFragment.arrayList.set(position, pengobatan);
                     HomeFragment.recyclerView.getAdapter().notifyItemChanged(position);
@@ -138,6 +142,7 @@ public class PengobatanEdit extends AppCompatActivity {
                 map.put("nama_obat", nama_obat.getText().toString());
                 map.put("frekuensi_minum",frekuensi_minum.getText().toString());
                 map.put("qty", qty.getText().toString());
+                map.put("deskripsi", deskripsi.getText().toString());
                 map.put("img", bitmapToString(bitmap));
                 return map;
             }
@@ -159,13 +164,31 @@ public class PengobatanEdit extends AppCompatActivity {
             return false;
         }
 
+        if (deskripsi.getText().toString().isEmpty()){
+            layoutdeskripsi.setErrorEnabled(true);
+            layoutdeskripsi.setError("Deskripsi Tidak Boleh Kosong");
+            return false;
+        }
+
         if (frekuensi_minum.getText().toString().isEmpty()){
             layoutfrekuensi_minum.setErrorEnabled(true);
             layoutfrekuensi_minum.setError("Frekuensi Tidak Boleh Kosong");
             return false;
         }
 
+        if (!TextUtils.isDigitsOnly(frekuensi_minum.getText())){
+            layoutfrekuensi_minum.setErrorEnabled(true);
+            layoutfrekuensi_minum.setError("Frekuensi Tidak Boleh Kosong");
+            return false;
+        }
+
         if (qty.getText().toString().isEmpty()){
+            layoutqty.setErrorEnabled(true);
+            layoutqty.setError("Dosis Tidak Boleh Kosong");
+            return false;
+        }
+
+        if (!TextUtils.isDigitsOnly(qty.getText())){
             layoutqty.setErrorEnabled(true);
             layoutqty.setError("Dosis Tidak Boleh Kosong");
             return false;
@@ -201,6 +224,7 @@ public class PengobatanEdit extends AppCompatActivity {
         nama_obat.setText(pengobatan.getNama_obat());
         frekuensi_minum.setText(pengobatan.getFrekuensi_minum());
         qty.setText(pengobatan.getQty());
+        deskripsi.setText(pengobatan.getDeskripsi());
         idObat = pengobatan.getId();
         Picasso.get().load(Constant.URL+"image/"+pengobatan.getImg()).into(imageView);
     }
