@@ -30,6 +30,11 @@ import com.squareup.picasso.Picasso;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -146,8 +151,17 @@ public class PengobatanDetail extends AppCompatActivity {
         nama_obat.setText(pengobatan.getNama_obat());
         frekuensi_minum.setText(pengobatan.getFrekuensi_minum());
         qty.setText(pengobatan.getQty());
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        Date date = null;
+        String date1 = null;
+        try {
+            date = sdf.parse(pengobatan.getCreated_at());
+            date1 = sdf.format(date);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
         deskripsi.setText(pengobatan.getDeskripsi());
-        created.setText(pengobatan.getCreated_at());
+        created.setText(date1);
         idObat = pengobatan.getId();
         Picasso.get().load(Constant.URL+"image/"+pengobatan.getImg()).into(imageView);
     }
